@@ -1,0 +1,46 @@
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  padding: 18px 32px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.brand-mark {
+  font-size: 24px;
+}
+
+.app-main {
+  flex: 1;
+  padding: 32px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+  .app-main {
+    padding: 16px;
+  }
+  .app-header {
+    padding: 14px 16px;
+  }
+}

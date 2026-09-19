@@ -1,0 +1,136 @@
+.reader-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 24px;
+  height: calc(100vh - 140px);
+}
+
+.reader-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow-y: auto;
+}
+
+.back-link {
+  text-decoration: none;
+  font-size: 13px;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.reader-title {
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+.reader-author {
+  font-size: 13px;
+  color: var(--text);
+  opacity: 0.75;
+  margin-bottom: 16px;
+}
+
+.field-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text);
+  opacity: 0.7;
+  margin-top: 14px;
+  margin-bottom: 6px;
+}
+
+.reader-sidebar select,
+.reader-sidebar textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 14px;
+  background: var(--bg);
+  color: var(--text-h);
+  resize: vertical;
+}
+
+.rating-stars {
+  display: flex;
+  gap: 4px;
+}
+
+.star {
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: var(--border);
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.star.filled {
+  color: var(--accent);
+}
+
+.reader-pane {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.epub-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.epub-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.epub-container {
+  flex: 1;
+  min-height: 0;
+}
+
+.text-viewer {
+  height: 100%;
+  overflow-y: auto;
+  padding: 32px 48px;
+  font-family: var(--sans);
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--text-h);
+}
+
+.plain-text {
+  white-space: pre-wrap;
+  font-family: var(--sans);
+  margin: 0;
+}
+
+@media (max-width: 780px) {
+  .reader-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .reader-pane {
+    height: 70vh;
+  }
+}
