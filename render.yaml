@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: reading-room
+    runtime: node
+    plan: free
+    branch: claude/reading-room-creation-mf06rm
+    buildCommand: npm install --prefix server && npm install --prefix client && npm run build --prefix client
+    startCommand: npm start --prefix server
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production

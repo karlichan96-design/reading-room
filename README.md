@@ -47,3 +47,24 @@ Uploaded files are stored in `server/uploads/` and metadata in
   - EPUB via `epubjs`, with page navigation and reading-position sync
   - Text/Markdown rendered inline
 - Per-book status, 5-star rating, and free-text notes
+
+## Deploying
+
+In production, the Express server also builds and serves the React
+frontend as static files (see the `clientDist` block in
+`server/src/index.js`), so the whole app runs as a single service.
+
+A [Render](https://render.com) Blueprint is included (`render.yaml`). To deploy:
+
+1. Push this repo to GitHub (already done if you're reading this from the repo).
+2. In the Render dashboard, choose **New → Blueprint**, connect the repo, and
+   select this branch.
+3. Render will build with `npm install --prefix server && npm install --prefix client && npm run build --prefix client`
+   and start with `npm start --prefix server`.
+
+**Free tier caveat**: Render's free web service plan has no persistent disk —
+the filesystem (and with it `server/uploads/` and `server/data.sqlite`) resets
+on every redeploy and possibly after the service spins down from inactivity.
+For a library that actually persists, upgrade the service to a paid plan with
+a disk attached, mounted at `server/uploads` and pointing `server/data.sqlite`
+at the same disk.
