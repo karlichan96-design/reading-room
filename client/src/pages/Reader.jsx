@@ -107,7 +107,7 @@ export default function Reader() {
       <div className="reader-pane">
         {book.format === 'pdf' && <PdfViewer book={book} onProgress={handleProgress} />}
         {book.format === 'epub' && <EpubViewer book={book} onProgress={handleProgress} />}
-        {book.format === 'text' && <TextViewer book={book} />}
+        {book.format === 'text' && <TextViewer book={book} onProgress={handleProgress} />}
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
 import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.mjs?url';
 import { fileUrl } from '../api.js';
+import { usePageTurn } from '../hooks/usePageTurn.js';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
@@ -77,19 +78,19 @@ export default function PdfViewer({ book, onProgress }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNum]);
 
-  function goPrev() {
-    setPageNum((p) => Math.max(1, p - 1));
-  }
+  const goPrev = useCallback(() => setPageNum((p) => Math.max(1, p - 1)), []);
+  const goNext = useCallback(
+    () => setPageNum((p) => Math.min(numPages || p, p + 1)),
+    [numPages]
+  );
 
-  function goNext() {
-    setPageNum((p) => Math.min(numPages || p, p + 1));
-  }
+  usePageTurn(containerRef, { onPrev: goPrev, onNext: goNext, enabled: !!numPages });
 
   if (error) return <div className="banner-error">{error}</div>;
 
   return (
-    <div className="epub-shell">
-      <div className="epub-nav">
+    <div className="reader-shell">
+      <div className="reader-nav">
         <button className="btn-secondary" onClick={goPrev} disabled={pageNum <= 1}>
           ‹ Prev
         </button>

@@ -85,13 +85,13 @@
   position: relative;
 }
 
-.epub-shell {
+.reader-shell {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-.epub-nav {
+.reader-nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -112,6 +112,8 @@
   justify-content: center;
   padding: 16px;
   background: var(--bg);
+  touch-action: pan-y;
+  cursor: pointer;
 }
 
 .pdf-container canvas {
@@ -120,9 +122,19 @@
 }
 
 .text-viewer {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+  touch-action: pan-y;
+  cursor: pointer;
+}
+
+.text-pages {
   height: 100%;
-  overflow-y: auto;
   padding: 32px 48px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease;
   font-family: var(--sans);
   font-size: 18px;
   line-height: 1.7;
